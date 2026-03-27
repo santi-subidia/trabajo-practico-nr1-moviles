@@ -1,0 +1,43 @@
+# Gradle
+.gradle/
+/build/
+/captures/
+
+# Archivo de configuración local (ruta del SDK, etc)
+local.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/shelf/
+.idea/dbnavigator.xml
+
+# Binarios generados (Instaladores y librerías)
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Artefactos de compilación nativa (C++)
+.externalNativeBuild/
+.cxx/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de firma (MUY IMPORTANTE para seguridad)
+*.jks
+*.keystore
+*.p12
+
+# Logs
+*.log
+
+# Otros
+.navigation/
