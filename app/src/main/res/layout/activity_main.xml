@@ -17,12 +17,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/etDolar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
-            android:text="Name"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -34,20 +33,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toTopOf="@+id/editTextText2"
+            android:text="Euros"
+            app:layout_constraintBottom_toTopOf="@+id/etEuros"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editTextText2"
+            android:id="@+id/etEuros"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:ems="10"
             android:inputType="text"
-            android:text="Name"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="TextView"
+            android:text="Dolares:"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="Hello World!"
+            android:text="Valor de conversión"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.208"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +88,7 @@
             android:id="@+id/btnCambiarValor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="Cambiar valor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.856"
@@ -101,7 +99,7 @@
             android:id="@+id/tvConversor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="1$ ="
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnCambiarValor"
             app:layout_constraintHorizontal_bias="0.299"
@@ -125,7 +123,7 @@
             android:id="@+id/btnConvertir"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
+            android:text="Convertir"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.874"
@@ -133,29 +131,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.794" />
 
-        <RadioButton
-            android:id="@+id/rbtnDolares"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RadioButton"
+        <RadioGroup
+            android:id="@+id/rgMonedas"
+            android:layout_width="186dp"
+            android:layout_height="93dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.172"
+            app:layout_constraintHorizontal_bias="0.202"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224" />
+            app:layout_constraintVertical_bias="0.144">
 
-        <RadioButton
-            android:id="@+id/rbtnEuros"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RadioButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.172"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rbtnDolares"
-            app:layout_constraintVertical_bias="0.0" />
+            <RadioButton
+                android:id="@+id/rbtnDolares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Convertir a Dolares" />
+
+            <RadioButton
+                android:id="@+id/rbtnEuros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Convertir a Euros" />
+        </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
