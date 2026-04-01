@@ -4,17 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.subitech.trabajopractico_nro1.databinding.ActivityMainBinding;
 import com.subitech.trabajopractico_nro1.model.Moneda;
-import com.subitech.trabajopractico_nro1.viewModel.MainActivityViewModel;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;
     private String monedaSeleccionada;
 
+    private ArrayList<String> Inputs = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -49,32 +49,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.rbtnDolares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.etEuros.setEnabled(true);
+                binding.etDolar.setEnabled(false);
+                binding.etDolar.setText("");
+                monedaSeleccionada = "dolar";
+            }
+        });
+
+        binding.rbtnEuros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.etDolar.setEnabled(true);
+                binding.etEuros.setEnabled(false);
+                binding.etEuros.setText("");
+                monedaSeleccionada = "euro";
+            }
+        });
+
+
         binding.btnConvertir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int idSeleccionado = binding.rgMonedas.getCheckedRadioButtonId();
-                if(idSeleccionado == R.id.rbtnDolares){
-                    binding.etDolar.setEnabled(true);
-                    monedaSeleccionada = "Dolar";
-                } else if (idSeleccionado == R.id.rbtnEuros) {
-                    binding.etEuros.setEnabled(true);
-                    monedaSeleccionada = "Euro";
-                }else {
-                    Toast.makeText(MainActivity.this, "Seleccione una moneda de conversión", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                binding.btnConvertir.setEnabled(false);
-                binding.btnCambiarValor.setEnabled(true);
+                getInputs();
+                viewModel.convertirMoneda(monedaSeleccionada,Inputs);
+
             }
         });
 
         binding.btnCambiarValor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                viewModel.convertirMoneda(monedaSeleccionada,Double.parseDouble(binding.etEuros.getText().toString()));
+
             }
         });
     }
+    private void getInputs(){
+        Inputs.clear();
+        Inputs.add(binding.etDolar.getText().toString());
+        Inputs.add(binding.etEuros.getText().toString());
+    }
+
 
     private void resetVistas(){
         binding.etDolar.setEnabled(false);

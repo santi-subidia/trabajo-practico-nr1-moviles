@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="text"
+            android:hint=""
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -34,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:text="Euros"
+            android:hint=""
             app:layout_constraintBottom_toTopOf="@+id/etEuros"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -68,7 +70,7 @@
         android:id="@+id/clConvertor"
         android:layout_width="341dp"
         android:layout_height="166dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clInputs">
@@ -91,7 +93,7 @@
             android:text="Cambiar valor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.856"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -102,10 +104,26 @@
             android:text="1$ ="
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnCambiarValor"
-            app:layout_constraintHorizontal_bias="0.299"
+            app:layout_constraintHorizontal_bias="0.219"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.503" />
+
+        <EditText
+            android:id="@+id/etValorDeConversion"
+            android:layout_width="111dp"
+            android:layout_height="38dp"
+            android:layout_marginBottom="40dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Name"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnCambiarValor"
+            app:layout_constraintHorizontal_bias="0.186"
+            app:layout_constraintStart_toEndOf="@+id/tvConversor"
+            app:layout_constraintTop_toBottomOf="@+id/tvValor"
+            app:layout_constraintVertical_bias="0.436" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -137,7 +155,7 @@
             android:layout_height="93dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.202"
+            app:layout_constraintHorizontal_bias="0.272"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.144">
