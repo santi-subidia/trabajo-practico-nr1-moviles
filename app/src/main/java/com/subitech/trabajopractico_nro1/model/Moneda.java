@@ -6,12 +6,10 @@ import java.util.Objects;
 public class Moneda implements Serializable {
     private String nombre;
     private double valorIntercambio;
-    private double valorConvertir;
 
     public Moneda(String nombre, double valorIntercambio, double valorConvertir) {
         this.nombre = nombre;
         this.valorIntercambio = valorIntercambio;
-        this.valorConvertir = valorConvertir;
     }
 
     public Moneda(String nombre, double valorIntercambio) {
@@ -39,12 +37,8 @@ public class Moneda implements Serializable {
         this.valorIntercambio = valorIntercambio;
     }
 
-    public double getValorConvertir() {
-        return valorConvertir;
-    }
-
-    public void setValorConvertir(double valorConvertir) {
-        this.valorConvertir = valorIntercambio*valorConvertir;
+    public double getConversion(double valor){
+        return valor * valorIntercambio;
     }
 
     @Override

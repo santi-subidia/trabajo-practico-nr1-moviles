@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.subitech.trabajopractico_nro1.databinding.ActivityMainBinding;
 import com.subitech.trabajopractico_nro1.model.Moneda;
+import com.subitech.trabajopractico_nro1.model.VistaMainActivity;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;
     private String monedaSeleccionada;
 
-    private ArrayList<String> Inputs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,24 +30,25 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainActivityViewModel.class);
 
-        resetVistas();
+        binding.etDolar.setEnabled(false);
+        binding.etEuros.setEnabled(false);
 
         viewModel.getErrorMensaje().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
-                resetVistas();
             }
         });
 
-
-        viewModel.getMonedaMutable().observe(this, new Observer<Moneda>() {
+        viewModel.getVistaMutable().observe(this, new Observer<VistaMainActivity>() {
             @Override
-            public void onChanged(Moneda moneda) {
-                binding.tvConversor.setText("1$ = " + moneda.getValorConvertir());
-                resetVistas();
+            public void onChanged(VistaMainActivity vistaMainActivity) {
+                binding.etValorDeConversion.setText(String.valueOf(vistaMainActivity.getMoneda().getValorIntercambio()));
+                binding.etDolar.setText(vistaMainActivity.getValorPrimerMoneda());
+                binding.etEuros.setText(vistaMainActivity.getValorSegundaMoneda());
             }
         });
+
 
         binding.rbtnDolares.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.etEuros.setEnabled(true);
                 binding.etDolar.setEnabled(false);
                 binding.etDolar.setText("");
-                monedaSeleccionada = "dolar";
+                viewModel.getValorConversion("dolar");
             }
         });
 
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.etDolar.setEnabled(true);
                 binding.etEuros.setEnabled(false);
                 binding.etEuros.setText("");
-                monedaSeleccionada = "euro";
+                viewModel.getValorConversion("euro");
             }
         });
 
@@ -73,30 +74,19 @@ public class MainActivity extends AppCompatActivity {
         binding.btnConvertir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getInputs();
-                viewModel.convertirMoneda(monedaSeleccionada,Inputs);
+                boolean estadoPrimerMoneda = binding.etDolar.isEnabled();
+                String valorPrimerMoneda = binding.etDolar.getText().toString();
+                String valorSegundaMoneda = binding.etEuros.getText().toString();
 
+                viewModel.convertirMoneda(estadoPrimerMoneda,valorPrimerMoneda,valorSegundaMoneda);
             }
         });
 
         binding.btnCambiarValor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                viewModel.setValorConversion(binding.etValorDeConversion.getText().toString());
             }
         });
-    }
-    private void getInputs(){
-        Inputs.clear();
-        Inputs.add(binding.etDolar.getText().toString());
-        Inputs.add(binding.etEuros.getText().toString());
-    }
-
-
-    private void resetVistas(){
-        binding.etDolar.setEnabled(false);
-        binding.etEuros.setEnabled(false);
-        binding.btnCambiarValor.setEnabled(false);
-        binding.btnConvertir.setEnabled(true);
     }
 }
