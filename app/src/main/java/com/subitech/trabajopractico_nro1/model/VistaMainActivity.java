@@ -5,7 +5,6 @@ import java.util.Map;
 
 public class VistaMainActivity implements Serializable {
     private String valorPrimerMoneda;
-    private boolean estadoPrimerMoneda;
     private String valorSegundaMoneda;
     private Moneda moneda;
 
@@ -20,14 +19,6 @@ public class VistaMainActivity implements Serializable {
 
     public void setValorPrimerMoneda(String valorPrimerMoneda) {
         this.valorPrimerMoneda = valorPrimerMoneda;
-    }
-
-    public boolean isEstadoPrimerMoneda() {
-        return estadoPrimerMoneda;
-    }
-
-    public void setEstadoPrimerMoneda(boolean estadoPrimerMoneda) {
-        this.estadoPrimerMoneda = estadoPrimerMoneda;
     }
 
     public String getValorSegundaMoneda() {
